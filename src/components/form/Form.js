@@ -68,7 +68,7 @@ export default {
       this.isError = true;
     },
     isErrorField(field) {
-      if (this.$v.form[field] && this.$v.form[field].$error) {
+      if (this.getValidationField(field) && this.getValidationField(field).$error) {
         return true;
       }
       return this.errors.some(el => el.field === field);
@@ -76,7 +76,7 @@ export default {
     getErrors() {
       let errors = [];
       for (const field of Object.keys(this.form)) {
-        if (this.$v.form[field] && this.$v.form[field].$error) {
+        if (this.getValidationField(field) && this.getValidationField(field).$error) {
           errors.push({'field': field, 'message': null});
         }
       }
@@ -88,8 +88,8 @@ export default {
       }
     },
     getCharactersLeft(field) {
-      if (this.$v.form[field]) {
-        return this.$v.form[field].$params.maxLength.max - this.form[field].length;
+      if (this.getValidationField(field)) {
+        return this.getValidationField(field).$params.maxLength.max - this.form[field].length;
       }
       return 0;
     },
@@ -105,10 +105,13 @@ export default {
         label: 'Enterprise subscription (250 € / month)'
       }];
     },
+    getValidationField(field) {
+      return this.$v.form[field];
+    },
     onFieldBlur(field) {
-      if (this.$v.form[field]) {
-        this.$v.form[field].$touch();
-        if (this.$v.form[field].$error) {
+      if (this.getValidationField(field)) {
+        this.getValidationField(field).$touch();
+        if (this.getValidationField(field).$error) {
           if (!this.errors.some(el => el.field === field)) {
             this.errors.push({'field': field, 'message': null});
           }
