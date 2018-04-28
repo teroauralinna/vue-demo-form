@@ -1,5 +1,7 @@
 # Vue Demo Form
 
+Demo version available here: https://teroauralinna.github.io/vue-demo-form/
+
 ## Build Setup
 
 ``` bash
