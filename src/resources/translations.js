@@ -11,7 +11,7 @@ export default {
       sentInfo: "Here is the info you sent:",
       return: "Return to the form",
       submit: "Submit",
-      submitting: "Submitting...",
+      submitting: "Submitting",
       charactersLeft: "You have {charCount} character left. | You have {charCount} characters left." 
     },
     error: {

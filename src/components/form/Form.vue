@@ -56,7 +56,7 @@
       </div>
       <div class="form-group">
         <button type="submit" class="btn btn-primary" :disabled="submitting">
-          <span v-if="submitting">{{ $t('form.submitting' ) }}</span>
+          <span v-if="submitting">{{ $t('form.submitting' ) }} <img src="../../assets/loader.svg" /></span>
           <span v-else>{{ $t('form.submit' ) }}</span>
         </button>
       </div>

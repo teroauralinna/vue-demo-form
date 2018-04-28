@@ -1,4 +1,4 @@
-import { required, email, maxLength } from 'vuelidate/lib/validators'
+import { required, email, maxLength } from 'vuelidate/lib/validators';
 import axios from 'axios';
 import Vue from 'vue';
 
@@ -83,9 +83,7 @@ export default {
       return errors;
     },
     getFieldClasses(field) {
-      return { 
-        'is-invalid': this.isErrorField(field)
-      }
+      return { 'is-invalid': this.isErrorField(field) }
     },
     getCharactersLeft(field) {
       if (this.getValidationField(field)) {
@@ -126,25 +124,12 @@ export default {
   },
   validations: {
     form: {
-      email: {
-        required,
-        email
-      },
-      firstName: {
-        required
-      },
-      lastName: {
-        required
-      },
-      type: {
-        required
-      },
-      terms: {
-        required
-      },
-      additionalInfo: {
-        maxLength: maxLength(1000)
-      }
+      email: { required, email },
+      firstName: { required },
+      lastName: { required },
+      type: { required },
+      terms: { required },
+      additionalInfo: { maxLength: maxLength(1000) }
     }
   },
   watch: {
