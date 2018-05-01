@@ -9,7 +9,7 @@
       <div class="form-group">
         <label for="lastName">{{ $t('form.lastName') }} *</label>
         <input type="text" class="form-control" id="lastName" v-model.lazy.trim="form.lastName" @blur="onFieldBlur('lastName')" v-bind:class="getFieldClasses('lastName')">
-        <div v-if="isErrorField('firstName')" class="invalid-feedback">{{ $t('error.fieldRequired', { field: $t('form.lastName') }) }}</div>
+        <div v-if="isErrorField('lastName')" class="invalid-feedback">{{ $t('error.fieldRequired', { field: $t('form.lastName') }) }}</div>
       </div>
       <div class="form-group">
         <label for="email">{{ $t('form.email') }} *</label>
