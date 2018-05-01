@@ -68,17 +68,22 @@ export default {
       this.isError = true;
     },
     isErrorField(field) {
-      if (this.getValidationField(field) && this.getValidationField(field).$error) {
-        return true;
-      }
+      try {
+        if (this.getValidationField(field).$error) {
+          return true;
+        }
+      } catch (error) {}
+
       return this.errors.some(el => el.field === field);
     },
     getErrors() {
       let errors = [];
       for (const field of Object.keys(this.form)) {
-        if (this.getValidationField(field) && this.getValidationField(field).$error) {
-          errors.push({'field': field, 'message': null});
-        }
+        try {
+          if (this.getValidationField(field).$error) {
+            errors.push({'field': field, 'message': null});
+          }
+        } catch (error) {}
       }
       return errors;
     },
@@ -86,10 +91,11 @@ export default {
       return { 'is-invalid': this.isErrorField(field) }
     },
     getCharactersLeft(field) {
-      if (this.getValidationField(field)) {
+      try {
         return this.getValidationField(field).$params.maxLength.max - this.form[field].length;
+      } catch (error) {
+        return 0;
       }
-      return 0;
     },
     getTypes() {
       return [{
@@ -104,10 +110,13 @@ export default {
       }];
     },
     getValidationField(field) {
-      return this.$v.form[field];
+      if (this.$v.form[field]) {
+        return this.$v.form[field];
+      }
+      throw Error('No validation for field ' + field);
     },
     onFieldBlur(field) {
-      if (this.getValidationField(field)) {
+      try {
         this.getValidationField(field).$touch();
         if (this.getValidationField(field).$error) {
           if (!this.errors.some(el => el.field === field)) {
@@ -116,7 +125,7 @@ export default {
         } else {
           this.errors = this.errors.filter(el => el.field !== field);
         }
-      }
+      } catch (error) {}
     },
     reload() {
       window.location = '';
