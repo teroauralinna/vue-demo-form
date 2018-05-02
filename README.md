@@ -2,6 +2,8 @@
 
 Demo version available here: https://teroauralinna.github.io/vue-demo-form/
 
+Read more: https://auralinna.blog/post/2018/how-to-build-a-complete-form-with-vue-js
+
 ## Build Setup
 
 ``` bash
