@@ -19,7 +19,7 @@
       <div class="form-group">
         <label for="type">{{ $t('form.type') }} *</label>
         <select id="type" class="form-control" v-model="form.type" @blur="onFieldBlur('type')" v-bind:class="getFieldClasses('type')">
-            <option v-for="type in types" v-bind:key="type.value" v-bind:value="type.value">{{type.label}}</option>
+            <option v-for="type in types" v-bind:key="type.value" v-bind:value="type.value">{{ $t(type.label) }}</option>
         </select>
         <div v-if="isErrorField('type')" class="invalid-feedback">{{ $t('form.type') }}</div>
       </div>

@@ -100,13 +100,13 @@ export default {
     getTypes() {
       return [{
         value: 'free', 
-        label: 'Free trial subscription'
+        label: 'form.types.free'
       }, {
         value: 'starter', 
-        label: 'Starter subscription (50 € / month)'
+        label: 'form.types.starter'
       }, {
         value: 'enterprise', 
-        label: 'Enterprise subscription (250 € / month)'
+        label: 'form.types.enterprise'
       }];
     },
     getValidationField(field) {
